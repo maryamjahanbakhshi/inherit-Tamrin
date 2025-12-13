@@ -12,6 +12,7 @@ export class Bookspage implements OnInit {
 
   Save() {
     this.bookservice.Add(this.ItemB);
+    this.ItemB={id:0,titel:'',auther:'',publisher:'',price:0}
     this.DataRefresh();
     this.state='list';
 
