@@ -19,6 +19,10 @@ export class Loginpage {
   };
   test() {
     if (this.loginForm.userName == 'maryam' && this.loginForm.password == '1382') {
+      sessionStorage.setItem('tokenU1','marmlknlkdmlmxndckcmc')
+      if(this.loginForm.keepMe==true){
+        localStorage.setItem('tokenU1','marmlknlkdmlmxndckcmc')
+      }
       this.router.navigateByUrl('private')
     } else {
       this.message = 'نام کاربری یا کلمه عبور اشتباه است ';
