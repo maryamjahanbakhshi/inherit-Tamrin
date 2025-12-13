@@ -6,11 +6,12 @@ import { Memberspage } from './private/memberspage/memberspage';
 import { Borowspage } from './private/borowspage/borowspage';
 import { Reportspage } from './private/reportspage/reportspage';
 import { Dashboardpage } from './private/dashboardpage/dashboardpage';
+import { privateGuard } from './+security/private-guard';
 
 export const routes: Routes = [
     { path: 'login', component: Loginpage },
     {
-        path: 'private', component: PrivateTemplat, children: [
+        path: 'private', canActivate: [privateGuard], component: PrivateTemplat, children: [
             { path: 'book', component: Bookspage },
             { path: 'member', component: Memberspage },
             { path: 'borrow', component: Borowspage },
