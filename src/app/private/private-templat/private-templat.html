@@ -1,14 +1,12 @@
 <div class="sidebar">
-<a href="">داشبورد</a>
-<a href="">کتابها</a>
-<a href="">اعضا</a>
-<a href="">امانات</a>
-<a href="">گزارشات </a>
-<a href="">خروج</a>
+    <a routerLink="dashboard">داشبورد</a>
+    <a routerLink="book">کتابها</a>
+    <a routerLink="member">اعضا</a>
+    <a routerLink="borrow">امانات</a>
+    <a routerLink="report">گزارشات </a>
+    <a (click)="logOut()">خروج</a>
 </div>
 
 <div class="content">
-hi
+    <router-outlet></router-outlet>
 </div>
-
-<router-outlet></router-outlet>

@@ -11,7 +11,7 @@ export const routes: Routes = [
     { path: 'login', component: Loginpage },
     {
         path: 'private', component: PrivateTemplat, children: [
-            { path: 'books', component: Bookspage },
+            { path: 'book', component: Bookspage },
             { path: 'member', component: Memberspage },
             { path: 'borrow', component: Borowspage },
             { path: 'report', component: Reportspage },
