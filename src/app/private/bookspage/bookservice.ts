@@ -14,6 +14,6 @@ export class Bookservice {
     return [...this.data];
   }
   Add(item: BoolItem) {
-    this.data.push(item)
+    this.data.push(item);
   }
 }
