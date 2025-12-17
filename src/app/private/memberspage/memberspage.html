@@ -4,10 +4,10 @@
     <thead>
         <tr>
             <th>شناسه</th>
-            <th>عنوان</th>
-            <th>نویسنده </th>
-            <th>ناشر</th>
-            <th>قیمت</th>
+            <th>نام </th>
+            <th>نام خانوادگی </th>
+            <th>تلفن</th>
+            <th>ایمیل</th>
             <th></th>
             <th></th>
         </tr>
@@ -34,26 +34,26 @@
             <input [(ngModel)]="ItemM.id" type="number" name="id" id="id" placeholder="شناسه">
         </div>
         <div>
-            <label for="titel">نام</label>
-            <input [(ngModel)]="ItemM.fName" type="text" name="titel" id="titel" placeholder="نام">
+            <label for="fName">نام</label>
+            <input [(ngModel)]="ItemM.fName" type="text" name="fName" id="fName" placeholder="نام">
         </div>
         <div>
-            <label for="auther">نام خانوادگی</label>
-            <input [(ngModel)]="ItemM.lName" type="text" name="auther" id="auther" placeholder="نام خانوادگی ">
+            <label for="lName">نام خانوادگی</label>
+            <input [(ngModel)]="ItemM.lName" type="text" name="lName" id="lName" placeholder="نام خانوادگی ">
         </div>
         <div>
-            <label for="publisher">تلفن</label>
-            <input [(ngModel)]="ItemM.phone" type="text" name="publisher" id="publisher" placeholder="تلفن">
+            <label for="phone">تلفن</label>
+            <input [(ngModel)]="ItemM.phone" type="text" name="phone" id="phone" placeholder="تلفن">
         </div>
         <div>
-            <label for="price">ایمیل</label>
-            <input [(ngModel)]="ItemM.email" type="email" name="price" id="price" placeholder="ایمیل">
+            <label for="email">ایمیل</label>
+            <input [(ngModel)]="ItemM.email" type="email" name="email" id="email" placeholder="ایمیل">
         </div>
         <div>
-            <button class="primery" type="submit">تایید</button>
+            <button class="primery" type="button" (click)="checkNull()">تایید</button>
             <button class="primery" type="button" (click)="M_cancel()">انصراف</button>
         </div>
-        <div></div>
+        <div>{{message}}</div>
 
     </form>
 }

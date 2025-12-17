@@ -9,20 +9,32 @@ import { last } from 'rxjs';
   templateUrl: './memberspage.html',
   styleUrl: './memberspage.scss',
 })
-export class Memberspage implements OnInit{
+
+export class Memberspage implements OnInit {
+
+  message: string = '';
+
   M_Save() {
     this.memberservice.mAdd(this.ItemM);
-    this.ItemM={id:0, fName:'', lName:'', phone:'', email:'',}
+    this.ItemM = { id: 0, fName: '', lName: '', phone: '', email: '', }
     this.M_DataRefresh();
-    this.Mstat='mList';
+    this.Mstat = 'mList';
+  }
 
+  checkNull() {
+    if (this.ItemM.fName == '' || this.ItemM.lName == ''||this.ItemM.id) {
+      this.message = 'لطفا فیلد نام یا نام خانوادگی یا شناسه خود را وارد کنید ';
+    }
+    else {
+      this.M_Save();
+    }
   }
 
   ngOnInit(): void {
     this.M_DataRefresh()
   }
 
-  Mstat:string='mList';
+  Mstat: string = 'mList';
 
   Mdata: memberitem[] = [];
 
@@ -34,7 +46,7 @@ export class Memberspage implements OnInit{
     email: '',
   }
 
-  memberservice=inject(Memberservice);
+  memberservice = inject(Memberservice);
   M_DataRefresh() {
     this.Mdata = this.memberservice.mList();
   }
