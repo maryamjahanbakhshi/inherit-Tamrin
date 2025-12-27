@@ -24,6 +24,7 @@
                 <button class="primery" (click)="editB(item)">ویرایش</button>
                 <button class="primery" (click)="removeB(item)">حذف</button>
             </td>
+            <td></td>
         </tr>
         }
     </tbody>
@@ -31,7 +32,6 @@
 }
 
 @else {
-
 <form (ngSubmit)="Save()">
     @if(state=='Remove'){
     <div class="alert">
@@ -68,7 +68,5 @@
         <button class="primery" type="button" (click)="cancel()">انصراف</button>
     </div>
     <div></div>
-
 </form>
-
 }

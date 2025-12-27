@@ -29,13 +29,13 @@ export class Memberspage implements OnInit {
     this.Mstat = 'mList';
   }
 
- /* checkNull() {
+  /*checkNull() {
     if (this.ItemM.fName == '' || this.ItemM.lName == '' || this.ItemM.id) {
       this.message = 'لطفا فیلد نام یا نام خانوادگی یا شناسه خود را وارد کنید ';
     }
-    else {
+     else {
       this.M_Save();
-    }
+    }  
   }*/
 
   ngOnInit(): void {

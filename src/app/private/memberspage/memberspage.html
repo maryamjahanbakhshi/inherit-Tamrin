@@ -24,6 +24,7 @@
                 <button class="primery" (click)="M_Edit(item)">ویرایش</button>
                 <button class="primery" (click)="M_Remove(item)">حذف</button>
             </td>
+            <td></td>
         </tr>
         }
     </tbody>
@@ -55,6 +56,10 @@
         <button class="primery" type="submit" >تایید</button>
         <button class="primery" type="button" (click)="M_cancel()">انصراف</button>
     </div>
-    <!-- <div class="alert">{{message}}</div> -->
+
+    <!-- @if(message!=''){
+     <div class="alert">{{message}}</div>
+    } -->
+
 </form>
 }
