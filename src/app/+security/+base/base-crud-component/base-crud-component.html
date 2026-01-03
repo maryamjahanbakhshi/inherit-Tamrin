@@ -1,7 +1,5 @@
 @if (mystate=='list') {
-<div>
-    <button (click)="onadd.emit()">افزودن</button>
-</div>
+<button (click)="onadd.emit()" class="primery">افزودن</button>
 <table>
     <thead>
         @for (item of column; track $index) {
@@ -11,17 +9,16 @@
     </thead>
     <tbody>
         @for (item of mydata; track $index) {
+            <tr>
             @for (col of column; track $index) {
              <td>{{item[col.filde]}}</td>
             }
-        <tr>
             <td>
-                <button (click)="onremove.emit(item)">حذف</button>
-                <button (click)="onedit.emit(item)">ویرایش</button>
+                <button (click)="onremove.emit(item)" class="primery">حذف</button>
+                <button (click)="onedit.emit(item)" class="primery">ویرایش</button>
             </td>
         </tr>
         }
-
     </tbody>
 </table>
 }
@@ -34,8 +31,8 @@
 <form (ngSubmit)="onsave.emit()">
     <ng-content></ng-content>
     <div>
-        <button type="button" (click)="onsave.emit()">تایید</button>
-        <button type="button" (click)="oncancel.emit()">انصراف</button>
+        <button class="primery" type="button" (click)="onsave.emit()">تایید</button>
+        <button type="button" (click)="oncancel.emit()" class="primery">انصراف</button>
     </div>
 </form>
 }

@@ -36,7 +36,7 @@ export class Bookspage extends BaseCrudPage<BookItem> implements OnInit {
   }
   BooksCoulmn: colum[] = [
     { filde: 'id', title: 'شناسه' },
-    { filde: 'title', title: 'عنوان' },
+    { filde: 'titel', title: 'عنوان' },
     { filde: 'auther', title: 'نویسنده' },
     { filde: 'publisher', title: 'ناشر' },
     { filde: 'price', title: 'قیمت' }
