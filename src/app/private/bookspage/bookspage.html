@@ -21,8 +21,8 @@
             <td>{{item.publisher}}</td>
             <td>{{item.price}}</td>
             <td>
-                <button class="primery" (click)="editB(item)">ویرایش</button>
-                <button class="primery" (click)="removeB(item)">حذف</button>
+                <button class="primery" (click)="edit(item)">ویرایش</button>
+                <button class="primery" (click)="remove(item)">حذف</button>
             </td>
             <td></td>
         </tr>
@@ -40,27 +40,27 @@
     }
     <div>
         <label for="id">شناسه</label>
-        <input [disabled]="state=='Edit'|| state=='Remove'" [(ngModel)]="ItemB.id" name="id" id="id" placeholder="شناسه">
+        <input [disabled]="state=='Edit'|| state=='Remove'" [(ngModel)]="Item.id" name="id" id="id" placeholder="شناسه">
     </div>
 
     <div>
         <label for="titel">عنوان</label>
-        <input [disabled]="state=='Remove'" [(ngModel)]="ItemB.titel" type="text" name="titel" id="titel"
+        <input [disabled]="state=='Remove'" [(ngModel)]="Item.titel" type="text" name="titel" id="titel"
             placeholder="عنوان">
     </div>
     <div>
         <label for="auther">نویسنده</label>
-        <input [disabled]="state=='Remove'" [(ngModel)]="ItemB.auther" type="text" name="auther" id="auther"
+        <input [disabled]="state=='Remove'" [(ngModel)]="Item.auther" type="text" name="auther" id="auther"
             placeholder="نویسنده">
     </div>
     <div>
         <label for="publisher">ناشر</label>
-        <input [disabled]="state=='Remove'" [(ngModel)]="ItemB.publisher" type="text" name="publisher" id="publisher"
+        <input [disabled]="state=='Remove'" [(ngModel)]="Item.publisher" type="text" name="publisher" id="publisher"
             placeholder="ناشر">
     </div>
     <div>
         <label for="price">قیمت</label>
-        <input [disabled]="state=='Remove'" [(ngModel)]="ItemB.price" type="number" name="price" id="price"
+        <input [disabled]="state=='Remove'" [(ngModel)]="Item.price" type="number" name="price" id="price"
             placeholder="قیمت">
     </div>
     <div>

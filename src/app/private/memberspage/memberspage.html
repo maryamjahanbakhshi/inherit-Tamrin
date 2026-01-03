@@ -1,5 +1,5 @@
-@if (Mstat=='mList') {
-<button (click)="M_add()" class="primery">افزودن</button>
+@if (state=='list') {
+<button (click)="add()" class="primery">افزودن</button>
 <table>
     <thead>
         <tr>
@@ -13,7 +13,7 @@
         </tr>
     </thead>
     <tbody>
-        @for (item of Mdata; track $index) {
+        @for (item of data; track $index) {
         <tr>
             <td>{{item.id}}</td>
             <td>{{item.fName}}</td>
@@ -21,8 +21,8 @@
             <td>{{item.phone}}</td>
             <td>{{item.email}}</td>
             <td>
-                <button class="primery" (click)="M_Edit(item)">ویرایش</button>
-                <button class="primery" (click)="M_Remove(item)">حذف</button>
+                <button class="primery" (click)="edit(item)">ویرایش</button>
+                <button class="primery" (click)="remove(item)">حذف</button>
             </td>
             <td></td>
         </tr>
@@ -31,30 +31,30 @@
 </table>
 }
 @else {
-<form (ngSubmit)="M_Save()">
+<form (ngSubmit)="Save()">
     <div>
         <label for="id">شناسه</label>
-        <input [(ngModel)]="ItemM.id" type="number" name="id" id="id" placeholder="شناسه">
+        <input [(ngModel)]="Item.id" type="number" name="id" id="id" placeholder="شناسه">
     </div>
     <div>
         <label for="fName">نام</label>
-        <input [(ngModel)]="ItemM.fName" type="text" name="fName" id="fName" placeholder="نام">
+        <input [(ngModel)]="Item.fName" type="text" name="fName" id="fName" placeholder="نام">
     </div>
     <div>
         <label for="lName">نام خانوادگی</label>
-        <input [(ngModel)]="ItemM.lName" type="text" name="lName" id="lName" placeholder="نام خانوادگی ">
+        <input [(ngModel)]="Item.lName" type="text" name="lName" id="lName" placeholder="نام خانوادگی ">
     </div>
     <div>
         <label for="phone">تلفن</label>
-        <input [(ngModel)]="ItemM.phone" type="text" name="phone" id="phone" placeholder="تلفن">
+        <input [(ngModel)]="Item.phone" type="text" name="phone" id="phone" placeholder="تلفن">
     </div>
     <div>
         <label for="email">ایمیل</label>
-        <input [(ngModel)]="ItemM.email" type="email" name="email" id="email" placeholder="ایمیل">
+        <input [(ngModel)]="Item.email" type="email" name="email" id="email" placeholder="ایمیل">
     </div>
     <div>
         <button class="primery" type="submit" >تایید</button>
-        <button class="primery" type="button" (click)="M_cancel()">انصراف</button>
+        <button class="primery" type="button" (click)="cancel()">انصراف</button>
     </div>
 
     <!-- @if(message!=''){

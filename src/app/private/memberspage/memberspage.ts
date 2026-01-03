@@ -1,8 +1,10 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, Inject, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Memberservice } from './memberservice';
 import { last } from 'rxjs';
 import { thing } from '../../+security/+base/base-thing';
+import { BaseCrudPage } from '../../+security/+base/base-crud';
+import { BaseService } from '../../+security/+base/base-Service';
 
 @Component({
   selector: 'app-memberspage',
@@ -11,65 +13,20 @@ import { thing } from '../../+security/+base/base-thing';
   styleUrl: './memberspage.scss',
 })
 
-export class Memberspage implements OnInit {
-
-  message: string = '';
-
-  M_Save() {
-    if (this.Mstat == 'mAdd') {
-      this.memberservice.Add(this.ItemM);
-      // this.ItemM = { id: 0, fName: '', lName: '', phone: '', email: '', }
-    }
-    else if (this.Mstat == 'mEdit') {
-      this.memberservice.Edit(this.ItemM)
-    }
-    else if (this.Mstat == 'mRemove') {
-      this.memberservice.Remove(this.ItemM)
-    }
-    this.M_DataRefresh();
-    this.Mstat = 'mList';
-  }
-
+export class Memberspage extends BaseCrudPage<memberitem> implements OnInit {
   ngOnInit(): void {
-    this.M_DataRefresh()
+    this.DataRefresh();
   }
-
-  Mstat: string = 'mList';
-
-  Mdata: memberitem[] = [];
-
-  ItemM: memberitem = {
-    id: 0,
-    fName: '',
-    lName: '',
-    phone: '',
-    email: '',
+  override entitiesservice = inject(Memberservice)
+  override addperipair(): void {
+    this.Item={
+      id:0,
+      fName:'',
+      lName:'',
+      email:'',
+      phone:''
+    }
   }
-
-  memberservice = inject(Memberservice);
-  M_DataRefresh() {
-    this.Mdata = this.memberservice.list();
-  }
-
-  M_add() {
-    this.Mstat = "mAdd";
-    this.ItemM = { id: 0, fName: '', lName: '', phone: '', email: '', }
-  }
-
-  M_Edit(member: memberitem) {
-    this.ItemM = { ...member };
-    this.Mstat = 'mEdit';
-  }
-
-  M_Remove(member: memberitem) {
-    this.ItemM = { ...member };
-    this.Mstat = 'mRemove';
-  }
-
-  M_cancel() {
-    this.Mstat = 'mList';
-  }
-
 }
 
 export interface memberitem extends thing {
