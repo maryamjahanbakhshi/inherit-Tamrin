@@ -1,1 +1,32 @@
-<p>borowspage works!</p>
+<app-base-crud 
+   [mystate]="state" 
+   [column]="borowscolumn"
+   [mydata]="data"
+   (onedit)="edit($event)"
+   (onremove)="remove($event)"
+   (oncancel)="cancel()" 
+   (onadd)="add()"
+   (onsave)="Save()"
+   >
+       <div>
+        <label for="titel">عنوان</label>
+        <input [disabled]="state=='Remove'" [(ngModel)]="Item.titel" type="text" name="titel" id="titel"
+            placeholder="عنوان">
+    </div>
+    <div>
+        <label for="auther">نام و نام خانوادگی </label>
+        <input [disabled]="state=='Remove'" [(ngModel)]="Item.fullName" type="text" name="fullName" id="fullName"
+            placeholder="نام و نام خانوادگی ">
+    </div>
+    <div>
+        <label for="publisher">تاریخ امانت</label>
+        <input [disabled]="state=='Remove'" [(ngModel)]="Item.Dateborows" type="text" name="Dateborows" id="Dateborows"
+            placeholder="تاریخ امانت">
+    </div>
+    <div>
+        <label for="price">موعد بازگشت</label>
+        <input [disabled]="state=='Remove'" [(ngModel)]="Item.reternDate" type="text" name="reternDate" id="reternDate"
+            placeholder="موعد بازگشت">
+    </div>
+</app-base-crud>
+
