@@ -1,38 +1,14 @@
-@if (state=='list') {
-<button (click)="add()" class="primery">افزودن</button>
-<table>
-    <thead>
-        <tr>
-            <th>شناسه</th>
-            <th>نام </th>
-            <th>نام خانوادگی </th>
-            <th>تلفن</th>
-            <th>ایمیل</th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @for (item of data; track $index) {
-        <tr>
-            <td>{{item.id}}</td>
-            <td>{{item.fName}}</td>
-            <td>{{item.lName}}</td>
-            <td>{{item.phone}}</td>
-            <td>{{item.email}}</td>
-            <td>
-                <button class="primery" (click)="edit(item)">ویرایش</button>
-                <button class="primery" (click)="remove(item)">حذف</button>
-            </td>
-            <td></td>
-        </tr>
-        }
-    </tbody>
-</table>
-}
-@else {
-<form (ngSubmit)="Save()">
-    <div>
+<app-base-crud
+ [mystate]="state" 
+ [column]="memberCoulmn"
+ [mydata]="data"
+ (onedit)="edit($event)"
+ (onremove)="remove($event)"
+ (oncancel)="cancel()" 
+ (onadd)="add()"
+ (onsave)="Save()"
+ >
+     <div>
         <label for="id">شناسه</label>
         <input [(ngModel)]="Item.id" type="number" name="id" id="id" placeholder="شناسه">
     </div>
@@ -52,14 +28,4 @@
         <label for="email">ایمیل</label>
         <input [(ngModel)]="Item.email" type="email" name="email" id="email" placeholder="ایمیل">
     </div>
-    <div>
-        <button class="primery" type="submit" >تایید</button>
-        <button class="primery" type="button" (click)="cancel()">انصراف</button>
-    </div>
-
-    <!-- @if(message!=''){
-     <div class="alert">{{message}}</div>
-    } -->
-
-</form>
-}
+</app-base-crud>

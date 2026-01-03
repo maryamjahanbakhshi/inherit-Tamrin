@@ -25,6 +25,7 @@ export class BaseCrudPage<T extends thing> {
     }
     add() {
         this.state = "Add";
+        this.addperipair();
     }
     addperipair() {
     }

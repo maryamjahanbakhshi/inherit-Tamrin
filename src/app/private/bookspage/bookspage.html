@@ -1,49 +1,14 @@
-@if (state=='list') {
-<button (click)="add()" class="primery">افزودن</button>
-<table>
-    <thead>
-        <tr>
-            <th>شناسه</th>
-            <th>عنوان</th>
-            <th>نویسنده </th>
-            <th>ناشر</th>
-            <th>قیمت</th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @for (item of data; track $index) {
-        <tr>
-            <td>{{item.id}}</td>
-            <td>{{item.titel}}</td>
-            <td>{{item.auther}}</td>
-            <td>{{item.publisher}}</td>
-            <td>{{item.price}}</td>
-            <td>
-                <button class="primery" (click)="edit(item)">ویرایش</button>
-                <button class="primery" (click)="remove(item)">حذف</button>
-            </td>
-            <td></td>
-        </tr>
-        }
-    </tbody>
-</table>
-}
-
-@else {
-<form (ngSubmit)="Save()">
-    @if(state=='Remove'){
-    <div class="alert">
-        آیا از حذف این کتاب اطمینان دارید ؟؟
-    </div>
-    }
-    <div>
-        <label for="id">شناسه</label>
-        <input [disabled]="state=='Edit'|| state=='Remove'" [(ngModel)]="Item.id" name="id" id="id" placeholder="شناسه">
-    </div>
-
-    <div>
+<app-base-crud 
+   [mystate]="state" 
+   [column]="BooksCoulmn"
+   [mydata]="data"
+   (onedit)="edit($event)"
+   (onremove)="remove($event)"
+   (oncancel)="cancel()" 
+   (onadd)="add()"
+   (onsave)="Save()"
+   >
+       <div>
         <label for="titel">عنوان</label>
         <input [disabled]="state=='Remove'" [(ngModel)]="Item.titel" type="text" name="titel" id="titel"
             placeholder="عنوان">
@@ -63,10 +28,4 @@
         <input [disabled]="state=='Remove'" [(ngModel)]="Item.price" type="number" name="price" id="price"
             placeholder="قیمت">
     </div>
-    <div>
-        <button class="primery" type="submit">تایید</button>
-        <button class="primery" type="button" (click)="cancel()">انصراف</button>
-    </div>
-    <div></div>
-</form>
-}
+</app-base-crud>
