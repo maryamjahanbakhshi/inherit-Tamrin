@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Bookservice } from './bookservice';
 import { FormsModule } from '@angular/forms';
+import { thing } from '../../+security/+base/base-thing';
 
 @Component({
   selector: 'app-bookspage',
@@ -15,7 +16,7 @@ export class Bookspage implements OnInit {
       this.bookservice.Add(this.ItemB);
       //this.ItemB={id:0,titel:'',auther:'',publisher:'',price:0} 
     }
-     else if (this.state == 'Remove') {
+    else if (this.state == 'Remove') {
       this.bookservice.Remove(this.ItemB);
     }
     else if (this.state == 'Edit') {
@@ -61,14 +62,13 @@ export class Bookspage implements OnInit {
     this.state = 'list';
   }
 
-  removeB(book:BookItem){
-    this.ItemB={...book};
-    this.state='Remove';
+  removeB(book: BookItem) {
+    this.ItemB = { ...book };
+    this.state = 'Remove';
   }
 }
 
-export interface BookItem {
-  id: number;
+export interface BookItem extends thing {
   titel: string;
   auther: string;
   publisher: string;

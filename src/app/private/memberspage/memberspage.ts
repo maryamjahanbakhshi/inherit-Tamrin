@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Memberservice } from './memberservice';
 import { last } from 'rxjs';
+import { thing } from '../../+security/+base/base-thing';
 
 @Component({
   selector: 'app-memberspage',
@@ -16,27 +17,18 @@ export class Memberspage implements OnInit {
 
   M_Save() {
     if (this.Mstat == 'mAdd') {
-      this.memberservice.mAdd(this.ItemM);
+      this.memberservice.Add(this.ItemM);
       // this.ItemM = { id: 0, fName: '', lName: '', phone: '', email: '', }
     }
     else if (this.Mstat == 'mEdit') {
-      this.memberservice.mEdit(this.ItemM)
+      this.memberservice.Edit(this.ItemM)
     }
     else if (this.Mstat == 'mRemove') {
-      this.memberservice.mRemove(this.ItemM)
+      this.memberservice.Remove(this.ItemM)
     }
     this.M_DataRefresh();
     this.Mstat = 'mList';
   }
-
-  /*checkNull() {
-    if (this.ItemM.fName == '' || this.ItemM.lName == '' || this.ItemM.id) {
-      this.message = 'لطفا فیلد نام یا نام خانوادگی یا شناسه خود را وارد کنید ';
-    }
-     else {
-      this.M_Save();
-    }  
-  }*/
 
   ngOnInit(): void {
     this.M_DataRefresh()
@@ -56,7 +48,7 @@ export class Memberspage implements OnInit {
 
   memberservice = inject(Memberservice);
   M_DataRefresh() {
-    this.Mdata = this.memberservice.mList();
+    this.Mdata = this.memberservice.list();
   }
 
   M_add() {
@@ -80,8 +72,7 @@ export class Memberspage implements OnInit {
 
 }
 
-export interface memberitem {
-  id: number;
+export interface memberitem extends thing {
   fName: string;
   lName: string;
   phone?: string;

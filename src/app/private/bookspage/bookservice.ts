@@ -1,35 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { BookItem } from './bookspage';
+import { BaseService } from '../../+security/+base/base-Service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class Bookservice {
-  private data: BookItem[] = [
+export class Bookservice extends BaseService<BookItem> {
+  override data: BookItem[] = [
     { id: 1, titel: 'پدرپولدار', auther: 'کیوساکی', publisher: 'امینی', price: 200000 },
     { id: 2, titel: 'جرات داشته باش', auther: 'سهی', publisher: 'درسا', price: 250000 }
   ]
-  list() {
-    return [...this.data];
-  }
-  Add(item: BookItem) {
-    this.data.push(item);
-  }
-  Edit(item: BookItem) {
-    const ind = this.data.findIndex(b => b.id = item.id)
-    if (ind != -1) {
-      this.data[ind].titel = item.titel;
-      this.data[ind].auther = item.auther;
-      this.data[ind].publisher = item.publisher;
-      this.data[ind].price = item.price;
-    }
-  }
-  Remove(item: BookItem) {
-    this.data = this.data.filter(b => b.id != item.id)
-   /* const ind = this.data.findIndex(b => b.id = item.id)
-    if (ind != -1) {
-      this.data=this.data.slice(ind,1)
-    }*/
+  override Update(destination: BookItem, source: BookItem): void {
+    destination.id = source.id;
+    destination.titel = source.titel;
+    destination.auther = source.auther;
+    destination.publisher = source.publisher;
+    destination.price = source.price;
   }
 }
